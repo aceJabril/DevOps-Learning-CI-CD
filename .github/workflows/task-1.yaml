@@ -25,7 +25,7 @@ jobs:
           run: python -m unittest discover -s task-1
 
         - name: Build Docker image
-          run: docker build -t acejabril/task-1:latest .
+          run: docker build -t acejabril/task-1:latest ./task-1
 
         - name: Push docker image
           run: docker push acejabril/task-1:latest
