@@ -38,6 +38,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            cd /home/ubuntu/DevOps-Learning-CI-CD/task-2/app
             docker pull acejabril/task-2-app:latest
             docker-compose down
             docker-compose up -d
