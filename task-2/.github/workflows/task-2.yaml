@@ -16,8 +16,22 @@ jobs:
       - name: Run linting
         run: flake8 .
 
-      - name: Run tests
-        run: python task-2/app/test_app.py
+      - name: DEBUG TEST DISCOVERY
+        run: |
+          echo "===== CURRENT DIRECTORY ====="
+          pwd
+
+          echo "===== FULL FILE TREE ====="
+          find .
+
+          echo "===== TEST FILE CHECK ====="
+          ls -R task-2 || true
+
+          echo "===== TRY DIRECT RUN ====="
+          python task-2/app/test_app.py || true
+
+          echo "===== UNTEST DISCOVERY ====="
+          python -m unittest discover -s task-2 -v
 
       - name: Login to DockerHub
         uses: docker/login-action@v2
