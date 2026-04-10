@@ -17,8 +17,7 @@ jobs:
         run: flake8 .
 
       - name: Run tests
-        working-directory: task-2/app
-        run: python -m unittest
+        run: python task-2/app/test_app.py
 
       - name: Login to DockerHub
         uses: docker/login-action@v2
