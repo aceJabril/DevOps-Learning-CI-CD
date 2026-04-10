@@ -39,8 +39,8 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             docker pull acejabril/task-2-app:latest
-            docker compose down
-            docker compose up -d
+            docker-compose down
+            docker-compose up -d
 
       - name: Notify success
         if: success()
