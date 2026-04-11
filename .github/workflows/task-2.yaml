@@ -38,9 +38,15 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/ubuntu/DevOps-Learning-CI-CD/task-2/app
+            cd /home/ubuntu
+            if [ ! -d "DevOps-Learning-CI-CD" ]; then
+              git clone https://github.com/aceJabril/DevOps-Learning-CI-CD.git
+            else
+              cd DevOps-Learning-CI-CD && git pull && cd ..
+            fi
+            cd DevOps-Learning-CI-CD/task-2/app
             docker pull acejabril/task-2-app:latest
-            docker-compose down
+            docker-compose down || true
             docker-compose up -d
 
       - name: Notify success
